@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {
   Header,
   Left,
@@ -21,21 +21,27 @@ const myHeader = props => {
         androidStatusBarColor="#fb724a"
         noShadow>
         <Left>
-          <Button transparent>
+          <Button transparent onPress={() => props.navigation.goBack()}>
             <Icon name="arrow-back" />
           </Button>
         </Left>
-        <Body style={{flexDirection: 'row'}}>
-          <Thumbnail
-            small
-            source={{
-              uri: data.image,
-            }}
-          />
-          <View style={{paddingHorizontal: 20}}>
-            <Title>{data.username}</Title>
-          </View>
-        </Body>
+        <TouchableOpacity
+          style={{paddingTop: 11}}
+          onPress={() => {
+            props.navigation.navigate('ProfileScreen', data);
+          }}>
+          <Body style={{flexDirection: 'row'}}>
+            <Thumbnail
+              small
+              source={{
+                uri: data.image,
+              }}
+            />
+            <View style={{paddingHorizontal: 20}}>
+              <Title>{data.username}</Title>
+            </View>
+          </Body>
+        </TouchableOpacity>
         <Right>
           <Button transparent>
             <Icon name="more" />

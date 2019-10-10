@@ -3,23 +3,56 @@ import {SafeAreaView, View, StyleSheet, Text} from 'react-native';
 import {Container, Tab, Tabs} from 'native-base';
 import {Row, Grid} from 'react-native-easy-grid';
 
+import AsyncStorage from '@react-native-community/async-storage';
+import firebase from 'firebase';
 import {withNavigation} from 'react-navigation';
 
 import Header from '../../Components/Navbars/Header';
 import Fab from '../../Components/Fabs/Fab';
 import ChatList from '../Main/Contact';
 import FriendList from '../Main/Friends';
+import Maps from '../../Components/Maps/Map';
 
 class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dataContact: this.props.dataContact,
+      users: [],
     };
   }
 
+  componentDidMount = async () => {
+    const uid = await AsyncStorage.getItem('uid');
+    this.setState({uid});
+
+    firebase
+      .database()
+      .ref('user')
+      .on('child_added', data => {
+        let person = data.val();
+        person.id = data.key;
+        if (person.id != this.state.uid) {
+          this.setState(prevData => {
+            return {
+              users: [...prevData.users, person],
+            };
+          });
+          // this.setState({ refreshing: false });
+        } else {
+          this.setState({
+            myBio: person,
+          });
+        }
+      });
+  };
+
   render() {
+    let {users} = this.state;
+    let {myBio} = this.state;
     console.log('data contact', this.props.dataContact);
+    console.log('data users tabs = ', users);
+    console.log('data users1 tabs = ', myBio);
     return (
       <SafeAreaView style={styles.container}>
         <Grid>
@@ -52,7 +85,7 @@ class Contact extends Component {
                   activeTabStyle={{backgroundColor: 'white'}}
                   textStyle={{color: 'gray'}}
                   activeTextStyle={{color: 'gray', fontWeight: 'bold'}}>
-                  <Text>1</Text>
+                  <Maps users={users} navigation={this.props.navigation} />
                 </Tab>
                 <Tab
                   heading="FRIENDS"
@@ -66,7 +99,7 @@ class Contact extends Component {
             </Container>
           </Row>
         </Grid>
-        <Fab navigation={this.props.navigation} />
+        <Fab navigation={this.props.navigation} myBio={myBio} />
       </SafeAreaView>
     );
   }

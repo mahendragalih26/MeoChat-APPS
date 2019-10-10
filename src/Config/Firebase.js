@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCOaWQ17F7rk01MpFvNshF6cGAsx-EV99A',
+  apiKey: 'AIzaSyDW04DOcubWmnVQCqJmQTd-OD0-KugQhvI',
   authDomain: 'meochat-c07e5.firebaseapp.com',
   databaseURL: 'https://meochat-c07e5.firebaseio.com',
   projectId: 'meochat-c07e5',

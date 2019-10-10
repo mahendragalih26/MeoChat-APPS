@@ -34,10 +34,6 @@ target 'MeoChat' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
-
   target 'MeoChatTests' do
     inherit! :search_paths
     # Pods for testing

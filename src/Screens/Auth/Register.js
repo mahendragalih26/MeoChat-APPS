@@ -95,7 +95,9 @@ export default class Signin extends Component {
             <Image source={Logo} style={styles.image} />
           </View>
           <Form>
-            <Item floatingLabel>
+            <Item
+              floatingLabel
+              style={{height: 60, borderBottomColor: '#fb724a'}}>
               <Label>Username</Label>
               <Input
                 maxLength={15}
@@ -103,11 +105,19 @@ export default class Signin extends Component {
               />
             </Item>
 
-            <Item floatingLabel>
+            <Item
+              floatingLabel
+              style={{height: 60, borderBottomColor: '#fb724a'}}>
               <Label>Email</Label>
-              <Input onChangeText={text => this.handleChange('email', text)} />
+              <Input
+                keyboardType="email-address"
+                autoCompleteType="email"
+                onChangeText={text => this.handleChange('email', text)}
+              />
             </Item>
-            <Item floatingLabel>
+            <Item
+              floatingLabel
+              style={{height: 60, borderBottomColor: '#fb724a'}}>
               <Label>Password</Label>
               <Input
                 secureTextEntry={true}
@@ -127,7 +137,7 @@ export default class Signin extends Component {
           <Row style={styles.foot}>
             <Col>
               <Text
-                style={styles.btnSignup}
+                style={styles.btnForgot}
                 onPress={() => {
                   this.props.navigation.navigate('SigninScreen');
                 }}>
@@ -143,13 +153,14 @@ export default class Signin extends Component {
 
 let btnSignup = {
   textDecorationLine: 'underline',
-  color: '#4B4C72',
+  color: '#fb724a',
+  fontWeight: 'bold',
 };
 
 const styles = StyleSheet.create({
   image: {
-    width: 200,
-    height: 100,
+    width: 280,
+    height: 80,
     resizeMode: 'contain',
   },
   containerHead: {
@@ -168,13 +179,13 @@ const styles = StyleSheet.create({
   btnSignin: {
     marginTop: 50,
     marginLeft: 15,
-    backgroundColor: '#f79231',
+    backgroundColor: '#fb724a',
   },
   textSignin: {
     color: 'white',
   },
   foot: {
-    marginTop: 20,
+    marginTop: 60,
     marginBottom: 50,
     marginLeft: 15,
   },

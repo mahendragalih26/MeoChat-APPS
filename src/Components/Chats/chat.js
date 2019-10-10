@@ -71,7 +71,7 @@ export default class Example extends React.Component {
   };
 
   render() {
-    // console.log('chat data , ', this.props.data);
+    console.log('chat data , ', this.props.data);
     return (
       <GiftedChat
         text={this.state.text}

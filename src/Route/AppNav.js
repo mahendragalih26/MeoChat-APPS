@@ -5,7 +5,8 @@ import Splash from '../Screens/Splash';
 import Tabs from '../Screens/Main/Tabs';
 import Login from '../Screens/Auth/Login';
 import Register from '../Screens/Auth/Register';
-import Profile from '../Screens/Main/Profile';
+import Profile from '../Components/Profile/ProfileAnother';
+import MyProfile from '../Components/Profile/myProfile';
 import Chat from '../Screens/Main/Chats';
 // import Maps from '../Components/Maps/Map';
 
@@ -32,6 +33,9 @@ const AppStack = createStackNavigator(
     },
     ProfileScreen: {
       screen: Profile,
+    },
+    MyProfileScreen: {
+      screen: MyProfile,
     },
     chatScreen: {
       screen: Chat,

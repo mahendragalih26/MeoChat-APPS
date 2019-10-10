@@ -87,7 +87,9 @@ class Login extends Component {
               <Image source={Logo} style={styles.image} />
             </View>
             <Form style={styles.formSignin}>
-              <Item floatingLabel>
+              <Item
+                floatingLabel
+                style={{height: 60, borderBottomColor: '#fb724a'}}>
                 <Label>Email</Label>
                 <Input
                   keyboardType="email-address"
@@ -95,7 +97,9 @@ class Login extends Component {
                   onChangeText={text => this.handleChange('email', text)}
                 />
               </Item>
-              <Item floatingLabel>
+              <Item
+                floatingLabel
+                style={{height: 60, borderBottomColor: '#fb724a'}}>
                 <Label>Password</Label>
                 <Input
                   secureTextEntry={true}

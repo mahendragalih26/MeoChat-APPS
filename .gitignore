@@ -29,11 +29,14 @@ build/
 local.properties
 *.iml
 
-# node.js
+# node.jsS
 #
 node_modules/
 npm-debug.log
-yarn-error.log
+yarn-error.logS
+
+#my library
+/src/Config/
 
 # BUCK
 buck-out/

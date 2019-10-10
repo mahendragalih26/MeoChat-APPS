@@ -10,7 +10,10 @@ const myChat = props => {
   return (
     <SafeAreaView style={styles.container}>
       <Grid>
-        <HeaderChat data={props.navigation.state.params} />
+        <HeaderChat
+          data={props.navigation.state.params}
+          navigation={props.navigation}
+        />
         <Row
           size={1}
           style={{
